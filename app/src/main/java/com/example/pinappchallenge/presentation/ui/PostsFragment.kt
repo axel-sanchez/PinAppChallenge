@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pinappchallenge.R
 import com.example.pinappchallenge.core.MyApplication
-import com.example.pinappchallenge.data.models.DataPost
+import com.example.pinappchallenge.data.models.DataPosts
 import com.example.pinappchallenge.data.models.Post
 import com.example.pinappchallenge.databinding.FragmentPostsBinding
 import com.example.pinappchallenge.domain.usecase.GetAllPostsUseCase
@@ -65,10 +63,10 @@ class PostsFragment: Fragment() {
         }
     }
 
-    private fun updateView(dataPost: DataPost) {
+    private fun updateView(dataPosts: DataPosts) {
         with(binding) {
 
-            dataPost.results?.let { characters ->
+            dataPosts.results?.let { characters ->
                 if (characters.isEmpty()) {
                     rvPosts.hide()
                     tvErrorText.text = Constants.ApiError.EMPTY_CHARACTERS.error
@@ -78,7 +76,7 @@ class PostsFragment: Fragment() {
                     setAdapter(characters)
                 }
             }?: kotlin.run {
-                tvErrorText.text = dataPost.apiError?.error
+                tvErrorText.text = dataPosts.apiError?.error
                 cvEmptyState.show()
                 rvPosts.hide()
             }
@@ -97,8 +95,7 @@ class PostsFragment: Fragment() {
     private val itemClick = { character: Post? ->
         character?.let {
             val bundle = bundleOf(ID_POST to it.id)
-
-            //findNavController().navigate(R.id.action_charactersFragment_to_detailsFragment, bundle, null)
+            findNavController().navigate(R.id.action_postsFragment_to_commentsFragment, bundle, null)
         }
     }
 }

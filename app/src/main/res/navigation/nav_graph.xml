@@ -9,5 +9,14 @@
         android:id="@+id/postsFragment"
         android:name="com.example.pinappchallenge.presentation.ui.PostsFragment"
         tools:layout="@layout/fragment_posts"
-        android:label="PostsFragment" />
+        android:label="PostsFragment" >
+        <action
+            android:id="@+id/action_postsFragment_to_commentsFragment"
+            app:destination="@id/commentsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentsFragment"
+        android:name="com.example.pinappchallenge.presentation.ui.CommentsFragment"
+        tools:layout="@layout/fragment_comments"
+        android:label="CommentsFragment" />
 </navigation>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp25"
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_marginEnd="@dimen/dp20"
+        android:layout_marginStart="@dimen/dp20"
+        android:textColor="@android:color/black"
+        tools:text="id labore ex et quam laborum"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginEnd="@dimen/dp20"
+        android:layout_marginStart="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp20"
+        android:textAlignment="center"
+        tools:text="Eliseo@gardner.biz"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginEnd="@dimen/dp20"
+        android:layout_marginStart="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp20"
+        android:textAlignment="center"
+        tools:text="laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+
+    <View
+        android:id="@+id/vSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp1"
+        android:layout_marginTop="@dimen/dp20"
+        android:background="@color/separator_gray"
+        app:layout_constraintTop_toBottomOf="@id/tvBody"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

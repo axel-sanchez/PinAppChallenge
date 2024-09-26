@@ -1,6 +1,6 @@
 package com.example.pinappchallenge.data.repository
 
-import com.example.pinappchallenge.data.models.DataPost
+import com.example.pinappchallenge.data.models.DataPosts
 import com.example.pinappchallenge.data.models.Post
 import com.example.pinappchallenge.data.source.PostLocalSource
 import com.example.pinappchallenge.data.source.PostRemoteSource
@@ -17,10 +17,10 @@ class PostRepositoryImpl @Inject constructor(
     private val postRemoteSource: PostRemoteSource,
     private val postLocalSource: PostLocalSource
 ): PostRepository {
-    override suspend fun getAllPosts(): DataPost {
+    override suspend fun getAllPosts(): DataPosts {
         val localCharacters = getLocalPosts()
         if (localCharacters.isNotEmpty()) {
-            return DataPost(results = localCharacters)
+            return DataPosts(results = localCharacters)
         }
 
         val remoteDataCharacters = getRemotePosts()
@@ -32,8 +32,8 @@ class PostRepositoryImpl @Inject constructor(
         return remoteDataCharacters
     }
 
-    override suspend fun getRemotePosts(): DataPost {
-        return postRemoteSource.getAllPosts().value ?: DataPost(apiError = Constants.ApiError.GENERIC)
+    override suspend fun getRemotePosts(): DataPosts {
+        return postRemoteSource.getAllPosts().value ?: DataPosts(apiError = Constants.ApiError.GENERIC)
     }
 
     override suspend fun getLocalPosts(): List<Post?> {

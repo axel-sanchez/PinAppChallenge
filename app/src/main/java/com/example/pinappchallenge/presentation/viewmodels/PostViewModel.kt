@@ -1,7 +1,7 @@
 package com.example.pinappchallenge.presentation.viewmodels
 
 import androidx.lifecycle.*
-import com.example.pinappchallenge.data.models.DataPost
+import com.example.pinappchallenge.data.models.DataPosts
 import com.example.pinappchallenge.domain.usecase.GetAllPostsUseCase
 import kotlinx.coroutines.launch
 
@@ -10,11 +10,11 @@ import kotlinx.coroutines.launch
  */
 class PostViewModel(private val getAllPostsUseCase: GetAllPostsUseCase): ViewModel() {
 
-    private val listData: MutableLiveData<DataPost> =
-        MutableLiveData<DataPost>()
+    private val listData: MutableLiveData<DataPosts> =
+        MutableLiveData<DataPosts>()
 
 
-    fun setListData(result: DataPost) {
+    fun setListData(result: DataPosts) {
         listData.postValue(result)
     }
 
@@ -24,7 +24,7 @@ class PostViewModel(private val getAllPostsUseCase: GetAllPostsUseCase): ViewMod
         }
     }
 
-    fun getPostsLiveData(): LiveData<DataPost> {
+    fun getPostsLiveData(): LiveData<DataPosts> {
         return listData
     }
 

@@ -1,7 +1,8 @@
-package com.example.pinappchallenge
+package com.example.pinappchallenge.presentation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.pinappchallenge.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
