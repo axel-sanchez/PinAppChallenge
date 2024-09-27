@@ -1,8 +1,8 @@
 package com.example.pinappchallenge.di.component
 
 import com.example.pinappchallenge.di.module.ApplicationModule
-import com.example.pinappchallenge.presentation.ui.CommentsFragment
-import com.example.pinappchallenge.presentation.ui.PostsFragment
+import com.example.pinappchallenge.navigation.Destinations.*
+import com.example.pinappchallenge.presentation.ui.MainActivity
 import dagger.Component
 import javax.inject.Singleton
 
@@ -12,6 +12,7 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [ApplicationModule::class])
 interface ApplicationComponent{
-    fun inject(postsFragment: PostsFragment)
-    fun inject(commentsFragment: CommentsFragment)
+    fun inject(postsScreen: PostsScreen)
+    fun inject(commentsScreen: CommentsScreen)
+    fun inject(mainActivity: MainActivity)
 }

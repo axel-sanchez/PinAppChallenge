@@ -2,7 +2,6 @@ package com.example.pinappchallenge.presentation.viewmodels
 
 import androidx.lifecycle.*
 import com.example.pinappchallenge.data.models.DataComments
-import com.example.pinappchallenge.data.models.DataPosts
 import com.example.pinappchallenge.domain.usecase.GetAllCommentsUseCase
 import kotlinx.coroutines.launch
 
