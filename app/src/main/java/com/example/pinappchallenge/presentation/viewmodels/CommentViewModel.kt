@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
  */
 class CommentViewModel(private val getAllCommentsUseCase: GetAllCommentsUseCase): ViewModel() {
 
-    private val listData: MutableLiveData<DataComments> = MutableLiveData<DataComments>()
+    private var listData: MutableLiveData<DataComments> = MutableLiveData<DataComments>()
 
     fun setListData(result: DataComments) {
         listData.postValue(result)
@@ -24,6 +24,10 @@ class CommentViewModel(private val getAllCommentsUseCase: GetAllCommentsUseCase)
 
     fun getCommentsLiveData(): LiveData<DataComments> {
         return listData
+    }
+
+    fun reset(){
+        listData = MutableLiveData<DataComments>()
     }
 
     class CommentViewModelFactory(private val getAllCommentsUseCase: GetAllCommentsUseCase) : ViewModelProvider.Factory {

@@ -9,7 +9,7 @@ object Constants {
     enum class ApiError(var error: String) {
         GENERIC("Hubo un error al obtener los posts"),
         GENERIC_DETAILS("Hubo un error al obtener los comentarios del post"),
-        EMPTY_CHARACTERS("No se obtuvo ningún post"),
+        EMPTY_POSTS("No se obtuvo ningún post"),
         NETWORK_ERROR("Hubo un error en la conexión de internet")
     }
 }

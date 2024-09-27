@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
  */
 class PostViewModel(private val getAllPostsUseCase: GetAllPostsUseCase): ViewModel() {
 
-    private val listData: MutableLiveData<DataPosts> =
+    private var listData: MutableLiveData<DataPosts> =
         MutableLiveData<DataPosts>()
 
 
@@ -26,6 +26,10 @@ class PostViewModel(private val getAllPostsUseCase: GetAllPostsUseCase): ViewMod
 
     fun getPostsLiveData(): LiveData<DataPosts> {
         return listData
+    }
+
+    fun reset(){
+        listData = MutableLiveData<DataPosts>()
     }
 
     class PostViewModelFactory(private val getAllPostsUseCase: GetAllPostsUseCase) : ViewModelProvider.Factory {
