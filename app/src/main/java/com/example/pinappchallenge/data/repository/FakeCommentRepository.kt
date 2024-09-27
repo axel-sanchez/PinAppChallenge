@@ -24,4 +24,8 @@ class FakeCommentRepository: CommentRepository {
     override suspend fun getLocalComments(idPost: Int): List<Comment?> {
         return listOf()
     }
+
+    companion object{
+        const val ID_POST = 1
+    }
 }
