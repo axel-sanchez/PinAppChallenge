@@ -3,6 +3,7 @@ package com.example.pinappchallenge.presentation.viewmodels
 import androidx.lifecycle.*
 import com.example.pinappchallenge.data.models.DataPosts
 import com.example.pinappchallenge.domain.usecase.GetAllPostsUseCase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 /**
@@ -16,12 +17,12 @@ class PostViewModel(private val getAllPostsUseCase: GetAllPostsUseCase): ViewMod
         }
     }
 
-    private fun setListData(result: DataPosts) {
+    fun setListData(result: DataPosts) {
         listData.postValue(result)
     }
 
     private fun getPosts() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             setListData(getAllPostsUseCase.call())
         }
     }

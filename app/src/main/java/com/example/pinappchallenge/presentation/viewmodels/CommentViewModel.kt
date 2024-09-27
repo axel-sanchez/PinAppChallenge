@@ -3,6 +3,7 @@ package com.example.pinappchallenge.presentation.viewmodels
 import androidx.lifecycle.*
 import com.example.pinappchallenge.data.models.DataComments
 import com.example.pinappchallenge.domain.usecase.GetAllCommentsUseCase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 /**
@@ -18,12 +19,12 @@ class CommentViewModel(private val getAllCommentsUseCase: GetAllCommentsUseCase)
         }
     }
 
-    private fun setListData(result: DataComments) {
+    fun setListData(result: DataComments) {
         listData.postValue(result)
     }
 
     private fun getComments(idPost: Int) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             setListData(getAllCommentsUseCase.call(idPost))
         }
     }
