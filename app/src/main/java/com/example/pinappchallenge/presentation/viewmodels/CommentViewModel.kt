@@ -2,6 +2,7 @@ package com.example.pinappchallenge.presentation.viewmodels
 
 import androidx.lifecycle.*
 import com.example.pinappchallenge.data.models.DataComments
+import com.example.pinappchallenge.data.models.DataPosts
 import com.example.pinappchallenge.domain.usecase.GetAllCommentsUseCase
 import kotlinx.coroutines.launch
 
@@ -10,13 +11,19 @@ import kotlinx.coroutines.launch
  */
 class CommentViewModel(private val getAllCommentsUseCase: GetAllCommentsUseCase): ViewModel() {
 
-    private val listData: MutableLiveData<DataComments> = MutableLiveData<DataComments>()
+    var idPost: Int = 0
 
-    fun setListData(result: DataComments) {
+    private val listData: MutableLiveData<DataComments> by lazy {
+        MutableLiveData<DataComments>().also {
+            getComments(idPost)
+        }
+    }
+
+    private fun setListData(result: DataComments) {
         listData.postValue(result)
     }
 
-    fun getComments(idPost: Int) {
+    private fun getComments(idPost: Int) {
         viewModelScope.launch {
             setListData(getAllCommentsUseCase.call(idPost))
         }

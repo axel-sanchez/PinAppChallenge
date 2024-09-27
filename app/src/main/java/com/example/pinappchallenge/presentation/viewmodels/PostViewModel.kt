@@ -10,15 +10,17 @@ import kotlinx.coroutines.launch
  */
 class PostViewModel(private val getAllPostsUseCase: GetAllPostsUseCase): ViewModel() {
 
-    private val listData: MutableLiveData<DataPosts> =
-        MutableLiveData<DataPosts>()
+    private val listData: MutableLiveData<DataPosts> by lazy {
+        MutableLiveData<DataPosts>().also {
+            getPosts()
+        }
+    }
 
-
-    fun setListData(result: DataPosts) {
+    private fun setListData(result: DataPosts) {
         listData.postValue(result)
     }
 
-    fun getPosts() {
+    private fun getPosts() {
         viewModelScope.launch {
             setListData(getAllPostsUseCase.call())
         }

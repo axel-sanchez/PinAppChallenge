@@ -25,8 +25,6 @@ import javax.inject.Inject
  */
 class CommentsFragment : Fragment() {
 
-    private var idPost: Int = 0
-
     @Inject
     lateinit var getAllCommentsUseCase: GetAllCommentsUseCase
 
@@ -55,9 +53,7 @@ class CommentsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        idPost = arguments?.getInt(ID_POST) ?: 0
-
-        viewModel.getComments(idPost)
+        viewModel.idPost = arguments?.getInt(ID_POST) ?: 0
 
         viewModel.getCommentsLiveData().observe(viewLifecycleOwner) { comments ->
             updateView(comments)
